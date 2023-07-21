@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ĐKý người vào Cty</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/styles.dd855970.css">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+  <script src="/styles.dd855970.js"></script></head>
+  <body style="margin-top:0">
+    <div style="display: flex;text-align: center">
+      <ul class="menu" style="margin:0;padding:0">
+          <li class="active" value="pgketqua">Kết quả duyệt</li>
+          <li value="pgdangky">Đăng ký mới</li>
+          <li><a href="link quy trình" target="_blank" style="text-decoration: none;color: #666;">
+            Quy trình<a></a></a></li>
+          <li><a href="link lịch làm việc" target="_blank" style="text-decoration: none;color: #666;">
+          Lịch làm việc<a></a></a></li>
+        </ul>
+            <img src="http://drive.google.com/uc?export=view&id=1i0G3-DqnwstwRDUSVZdgFT4buuw_jua2" class="logo" alt="SongLamPack" style="width: 45px; height: 45px;">
+    </div>
+    <!-- bảng chào mừng -->
+    <section id="pgdangky" class="hidden">
+      <h1 id="tieudeform" class="tieude" style="margin-top:5px;
+          color:indigo;
+          font-family: Arial, Helvetica, sans-serif;
+          text-align: center;
+          font-size: 20px
+        ">
+        ĐĂNG KÝ NGƯỜI VÀO LÀM VIỆC
+      </h1>
+
+      <form id="formdk" class="forminput">
+        <div>
+          <label>Người đăng ký:</label><br>
+          <input id="idngdk" class="clsngdk" type="text" placeholder="Mã nhân viên" style="width:133px; background-color: rgb(251, 251, 222)">
+          <input id="idhotendk" class="clshotendk" type="text" placeholder="Họ và tên" style="width:235px" readonly="">
+        </div>
+          <div>
+          <input id="idbophan" class="done" type="text" placeholder="Bộ phận" style="width:133px" readonly="">
+          <input id="idchucvu" class="done" type="text" placeholder="Chức vụ" style="width:235px" readonly="">
+        </div>
+          <div style="padding-top:10px;">
+						<label>Danh sách người vào công ty:</label><br>
+						<div class="dsnguoivao">
+							<input class="soTT" style="width:18px;border: none;border-top:" value="1/" readonly="">
+							<input class="soCCCD" type="text" style="width:108px; margin-bottom:2px" placeholder="Số CCCD">
+							<input class="HoVaTen" type="text" style="width:235px; margin-bottom:2px" placeholder="Họ và tên">
+							<br>
+							<input class="SoDT" type="text" style="width:107px; margin-bottom:2px;margin-left: 25px" placeholder="Số điện thoại">
+							<input class="DVcongTac" type="text" style="width:235px; margin-bottom:2px" placeholder="Đơn vị công tác">
+							<br>
+            </div>
+          <button id="btnAdd" style="width:65px;height:22px;font-size:14px;background-color:orange">Thêm</button>
+        </div>
+          <div style="display:flex;padding-top:10px">
+            <div style="text-align:right">
+          <label>Từ ngày:</label>
+          <input id="idtungay" class="nhaplieu" type="date">
+          <br><label>Đến ngày:</label>
+          <input id="iddenngay" class="nhaplieu" type="date">
+            </div>
+            <div style="padding-left:15px;text-align:right">
+          <label>Giờ đi:</label>
+          <input id="idtuthgian" class="nhaplieu" type="time" value="08:00">
+          <br><label>Giờ về:</label>
+          <input id="iddenthgian" class="nhaplieu" type="time" value="17:00">
+            </div>
+        </div>        
+        <div style="padding-top:10px">  
+          <input id="idlydo" class="nhaplieu" type="text" style="width:380px" placeholder="Lý do">
+          <br>
+          <input id="idghichu" class="nhaplieu" type="text" style="width:380px;margin-top: 3px" placeholder="Ghi chú">
+        </div>   
+        <div id="dsquanly" style="padding-top:10px">
+          <select id="quanly" style="font-size:16px; height: 25px;">
+            <option value="">- Chọn quản lý xác nhận -</option>
+          </select>
+        </div>
+      <div style="text-align:right;margin-right: 20px"><button id="btnguidk" type="submit" style="width:140px">Gửi đăng ký</button></div>
+      </form>
+      <h4 class="noteDate" style="
+          font-family: 'Times New Roman', Times, serif;
+          color: gray;
+          text-align: right;
+          font-size: 14px
+        ">
+        Bản thử nghiệm
+      </h4>
+    </section>
+        <!-- Tra kết quả -->
+        <section id="pgketqua">
+          <div>
+            <h2 id="tieudeform" class="tieude" style="margin:0px;margin-top:5px;
+              color:orangered;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 20px;
+              text-align: center;
+            ">TRA KẾT QUẢ ĐĂNG KÝ</h2>
+            <h2 id="tieudeform" class="tieude" style="margin-top:0px;
+              color:orangered;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 20px;
+              text-align: center;
+            ">NGƯỜI VÀO CÔNG TY LÀM VIỆC</h2>
+            <div>
+                <label class="noteDate" style="font-size:13px;margin-left: 133px;color:gray">Nhập ngày đăng ký</label><br>
+                <div id="formtra" style="display:flex; width: 377;font-size: 16px">
+                  <input class="nhaplieu" type="text" id="matracuu" placeholder="Mã nhân viên" size="11" height="50px">
+                  <input type="date" id="ngaytracuu" class="nhaplieu">
+                  <button id="btnkiemtra" Style="width:90px;height: 28px;margin-left: 5px;font-size: 15px">Kiểm tra</button><br>
+                </div>
+            </div>
+              <!-- <p>trả ra kết quả đăng ký</p> -->
+            <div id="result">
+              <div id="formketqua">
+                <div>
+                  <label>Người đăng ký:</label><br>
+                  <input type="text" style="width:133px" readonly="">
+                  <input type="text" style="width:235px" readonly="">
+                </div>
+                  <div>
+                  <input type="text" style="width:133px" readonly="">
+                  <input type="text" style="width:235px" readonly="">
+                </div>
+                  <div style="padding-top:10px">
+                  <label>Danh sách người vào công ty:</label><br>
+                  <textarea class="nhaplieu" style="width:380px;" readonly="" type="text"></textarea>   
+                </div>
+                <div style="display:flex;padding-top:10px">
+                  <div style="text-align:right">
+                    <label>Từ ngày:</label>
+                    <input class="nhaplieu" type="date" readonly="">
+                    <br><label>Đến ngày:</label>
+                    <input class="nhaplieu" type="date" readonly="">
+                  </div>
+                  <div style="padding-left:15px;text-align:right">
+                    <label>Giờ đi:</label>
+                    <input class="nhaplieu" type="time" readonly="">
+                    <br><label>Giờ về:</label>
+                    <input class="nhaplieu" type="time" readonly="">
+                  </div>
+                </div>
+                <div style="padding-top:10px">  
+                  <input class="nhaplieu" type="text" style="width:380px" readonly="">
+                  <br>
+                  <input class="nhaplieu" type="text" style="width:380px" readonly="">
+                </div>  
+                <div style="padding-top:10px">  
+                  <label>Trưởng bộ phận:</label>
+                  <input class="nhaplieu" style="width:68%" type="text" readonly="">
+                  <br><label>Phòng HCNS:</label>
+                  <input class="nhaplieu" style="width:72%" type="text" readonly="">
+                  <br><label>Giám đốc:</label>
+                  <input class="nhaplieu" style="width:78%" type="text" readonly="">
+                </div>  
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tra mã nhân viên -->
+        <!-- <section id="pgtranv" class="hidden">
+            <h2 style="color:teal">TRA CỨU MÃ NHÂN VIÊN</h2>
+            <p style="text-align:center;color: gray">Tính năng đang xây dựng...</p>
+            </section>  -->
+
+    <div id="dangchay" class="modal"><h2>Đang chạy...</h2></div>
+    <script src="/src.a2b27638.js"></script>
+  </body>
+</html>

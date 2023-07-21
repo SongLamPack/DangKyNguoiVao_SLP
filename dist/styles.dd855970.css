@@ -1,0 +1,176 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+textarea {
+  font-family: sans-serif;
+  resize: none;
+}
+
+label {
+  color: darkblue;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.forminput input,
+textarea {
+  font-size: 16px;
+  padding: 1px;
+}
+
+#formketqua {
+  border-style: ridge;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+#formketqua input,
+#formketqua textarea {
+  font-size: 16px;
+  padding: 1px;
+  border: none;
+  border-bottom: inset;
+  background-color: transparent;
+}
+#formtra input {
+  font-size: 16px;
+  padding: 1px;
+}
+
+input[type="radio"] {
+  transform: scale(1.2); /* Kích thước dấu chấm tròn */
+  margin-right: 10px; /*Khoảng cách giữa dấu chấm tròn và văn bản*/
+}
+
+.mucdich div {
+  width: 120px;
+}
+
+#btnguidk {
+  font-family: "Times New Roman", Times, serif;
+  width: 120px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  align-items: center;
+}
+
+button {
+  background: #1aab8a;
+  color: #fff;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+  border-radius: 5px;
+}
+button:hover {
+  background: #fff;
+  color: #1aab8a;
+}
+button:before,
+button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #1aab8a;
+  transition: 400ms ease all;
+}
+button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+button:hover:before,
+button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+
+/* modal */
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: beige;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.display {
+  display: flex;
+}
+.hidden {
+  display: none;
+}
+
+.menu li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+  float: left;
+  display: block;
+  color: #666;
+  text-align: center;
+  font-size: 14px;
+  padding: 4px 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu li:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.menu .active {
+  color: white;
+  background-color: #4caf50;
+}
+
+.done {
+  color: green;
+}
+.fal {
+  color: red;
+}
+.wait {
+  color: chocolate;
+}
+
+#quanly option {
+  font-size: 16px;
+}
+
+.dcduyet {
+  background-color: rgba(235, 255, 255, 0.9);
+}
+
+.koduyet {
+  background-color: rgba(255, 222, 222, 0.5);
+}
+
+.thieudl {
+  background-color: pink;
+}
+
+::placeholder {
+  font-size: 15px;
+  font-style: italic;
+}
+
+
+/*# sourceMappingURL=/styles.dd855970.css.map */
