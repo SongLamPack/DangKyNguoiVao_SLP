@@ -7,6 +7,7 @@ body {
 textarea {
   font-family: sans-serif;
   resize: none;
+  resize: ;
 }
 
 label {
