@@ -164,6 +164,7 @@ idnguoidk.addEventListener("input", (e) => {
 
 btnguidk.addEventListener("click", (e) => {
   e.preventDefault();
+  var stt = document.querySelectorAll(".soTT");
   var cccd = document.querySelectorAll(".soCCCD");
   var hoten = document.querySelectorAll(".HoVaTen");
   var dt = document.querySelectorAll(".SoDT");
@@ -175,6 +176,7 @@ btnguidk.addEventListener("click", (e) => {
     var hovaten = hoten[i].value;
     var sodt = dt[i].value;
     var dvcongtac = donvi[i].value;
+    var tt = stt[i].value;
     if (socccd === "") {
       cccd[i].classList.add("thieudl");
       checkinput = "false";
@@ -199,7 +201,7 @@ btnguidk.addEventListener("click", (e) => {
     } else {
       donvi[i].classList.remove("thieudl");
     }
-    dsdangky.push(`${socccd} | ${hovaten} | ${sodt} | ${dvcongtac}`);
+    dsdangky.push(`${tt} [${socccd}] ${hovaten} |ĐV:${dvcongtac} |ĐT:${sodt}`);
   }
   if (checkinput === "false") {
     alert("Vui lòng nhập đầy đủ thông tin người vào công ty");
@@ -247,6 +249,8 @@ btnguidk.addEventListener("click", (e) => {
     `XÁC NHẬN! \nGửi đăng ký cho người vào công ty ngày ${ngaythang[2]}/${ngaythang[1]}/${ngaythang[0]}`
   );
   if (qs === true) {
+    modal.classList.add("display");
+    console.log(modal);
     const type = "dangkynguoivao";
     const data = {
       MaNV,
@@ -263,7 +267,6 @@ btnguidk.addEventListener("click", (e) => {
       QuanLy
     };
     const submitData = { type, data };
-    modal.style.display = "flex";
     fetch(URL, {
       method: "POST",
       headers: {
@@ -288,15 +291,170 @@ btnguidk.addEventListener("click", (e) => {
         console.error("Error:", error);
         alert("❌ Đăng ký không thành công ⚠ Vui lòng thử lại");
       });
-    modal.style.display = "none";
+    modal.classList.remove("display");
   }
 });
 
 const idmatracuu = document.getElementById("matracuu");
+const idngaytracuu = document.getElementById("ngaytracuu");
 idmatracuu.addEventListener("input", (e) => {
   idmatracuu.value = idmatracuu.value.toUpperCase();
 });
 
 btnkiemtra.addEventListener("click", (e) => {
   e.preventDefault();
+  var resultEle = document.getElementById("result");
+  var name = idmatracuu.value;
+  var date = idngaytracuu.value;
+  var idate = parseInt(date.split("-").join(""));
+  if (name === "") {
+    alert("Vui lòng nhập mã nhân viên tra cứu");
+    return;
+  }
+
+  let submitData = {
+    type: "check",
+    data: { name, idate }
+  };
+  modal.classList.add("display");
+  console.log(submitData);
+  fetch(URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      modal.classList.remove("display");
+      render(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      modal.classList.remove("display");
+      resultEle.innerHTML = `
+      <div class="koduyet" style="color:red">
+      <p>Không có kết quả nào phù hợp!</p>
+      </div>
+      `;
+      // alert("không có kết quả nào, hãy kiểm tra thông tin tra cứu và thử lại");
+    });
 });
+
+function render(listdata) {
+  var resultEle = document.getElementById("result");
+  var innerHtml = "";
+  for (var i = 0; i < listdata.length; i++) {
+    var data = listdata[i];
+    innerHtml += `<div id="formketqua" class="${
+      data.KetQua === 1 ? "dcduyet" : data.KetQua === -1 ? "koduyet" : ""
+    }">
+    <div>
+      <h2 style="margin:0;text-align:center" class="${
+        data.KetQua === 1 ? "done" : data.KetQua === -1 ? "fal" : "wait"
+      }">${
+      data.KetQua === 1
+        ? "ĐƯỢC DUYỆT"
+        : data.KetQua === -1
+        ? "KHÔNG ĐƯỢC DUYỆT"
+        : "ĐANG CHỜ"
+    }</h2>
+    </div>
+    <div>
+      <label>Người đăng ký:</label><br>
+      <input type="text" style="width:133px" readonly Value="${
+        data.MaNV
+      }"></input>
+      <input type="text" style="width:235px" readonly Value="${
+        data.HoTen
+      }"></input>
+    </div>
+      <div>
+      <input type="text" style="width:133px" readonly Value="${
+        data.BoPhan
+      }"></input>
+      <input type="text" style="width:235px" readonly Value="${
+        data.ChucVu
+      }"></input>
+    </div>
+      <div style="padding-top:10px">
+      <label>Danh sách người vào công ty:</label><br>
+      <textarea class="nhaplieu" style="width:380px; height:${
+        data.NguoiDuocVao.split(String.fromCharCode(10)).length * 37
+      }px" readonly type="text">${data.NguoiDuocVao}</textarea >   
+    </div>
+    <div style="display:flex;padding-top:10px">
+      <div style="text-align:right">
+        <label>Từ ngày:</label>
+        <input class="nhaplieu" type="text" style="width:90px" readonly value="${
+          data.TuNgay
+        }"></input>
+        <br><label>Đến ngày:</label>
+        <input class="nhaplieu" type="text" style="width:90px" readonly value="${
+          data.DenNgay
+        }"></input>
+      </div>
+      <div style="padding-left:15px;text-align:right">
+        <label>Giờ vào:</label>
+        <input class="nhaplieu" type="text" style="width:50px" readonly value="${
+          data.GioVao
+        }"></input>
+        <br><label>Giờ ra:</label>
+        <input class="nhaplieu" type="text" style="width:50px" readonly value="${
+          data.GioRa
+        }"></input>
+      </div>
+    </div>
+    <div style="padding-top:10px">  
+      <input class="nhaplieu" type="text" style="width:380px" readonly value="${
+        data.LyDo
+      }"></input>
+      <br>
+      <input class="nhaplieu" type="text" style="width:380px" readonly value="${
+        data.GhiChu
+      }"></input>
+    </div>  
+    <div style="padding-top:10px">  
+      <label>Trưởng bộ phận:</label>
+      <input class="${
+        data.TBPDuyet === "Duyệt"
+          ? "done"
+          : data.TBPDuyet === "Không"
+          ? "fal"
+          : "wait"
+      }" style="width:68%" type="text" readonly value="${data.TruongBP} [${
+      data.TBPDuyet
+    }]"></input>
+      <br><label>Phòng HCNS:</label>
+      <input class="${
+        data.NSDuyet === "Duyệt"
+          ? "done"
+          : data.NSDuyet === "Không"
+          ? "fal"
+          : "wait"
+      }" style="width:72%" type="text" readonly value="${data.PhongNS} [${
+      data.NSDuyet
+    }]"></input>
+      <br><label>Giám đốc:</label>
+      <input class="${
+        data.GDDuyet === "Duyệt"
+          ? "done"
+          : data.GDDuyet === "Không"
+          ? "fal"
+          : "wait"
+      }" style="width:78%" type="text" readonly value="${data.GiamDoc} [${
+      data.GDDuyet
+    }]"></input>
+      <br><label>Lý do duyệt:</label>
+      <input class="nhaplieu" style="width:78%" type="text" readonly value="${
+        data.LyDoDuyet
+      }"></input>
+    </div>  
+  </div>`;
+  }
+  resultEle.innerHTML = innerHtml;
+}
