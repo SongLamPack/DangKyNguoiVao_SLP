@@ -19,6 +19,12 @@ const iddenthgian = document.getElementById("iddenthgian");
 const idlydo = document.getElementById("idlydo");
 const idghichu = document.getElementById("idghichu");
 const idquanly = document.getElementById("quanly");
+const idNhomKH = document.getElementById("idNhomKH");
+const idNhapNhomKH = document.getElementById("NhapNhomKH");
+const idLichTrinh = document.getElementById("idLichTrinh");
+const idNhapLichTrinh = document.getElementById("NhapLichTrinh");
+const idPhongHop = document.getElementById("idPhongHop");
+const idNhapPhongHop = document.getElementById("NhapPhongHop");
 
 listItems.forEach((item) => {
   item.addEventListener("click", function () {
@@ -162,6 +168,39 @@ idnguoidk.addEventListener("input", (e) => {
   }
 });
 
+idNhomKH.addEventListener("change", function () {
+  if (idNhomKH.value === "Khác") {
+    idNhapNhomKH.style.display = "inline";
+    idNhomKH.style.width = "65px";
+  } else {
+    idNhapNhomKH.style.display = "none";
+    idNhomKH.style.width = "";
+  }
+});
+
+idLichTrinh.addEventListener("change", function () {
+  if (idLichTrinh.value === "Khác") {
+    idNhapLichTrinh.style.display = "inline";
+    idLichTrinh.style.width = "65px";
+  } else {
+    idNhapLichTrinh.style.display = "none";
+    idLichTrinh.style.width = "";
+  }
+  if (idLichTrinh.value === "Khác" || idLichTrinh.value === "Xưởng sản xuất") {
+    idPhongHop.value = "";
+  }
+});
+
+idPhongHop.addEventListener("change", function () {
+  if (idPhongHop.value === "Khác") {
+    idNhapPhongHop.style.display = "inline";
+    idPhongHop.style.width = "65px";
+  } else {
+    idNhapPhongHop.style.display = "none";
+    idPhongHop.style.width = "";
+  }
+});
+
 btnguidk.addEventListener("click", (e) => {
   e.preventDefault();
   var stt = document.querySelectorAll(".soTT");
@@ -218,6 +257,21 @@ btnguidk.addEventListener("click", (e) => {
   const LyDo = idlydo.value;
   const GhiChu = idghichu.value;
   const QuanLy = idquanly.value;
+  if (idNhomKH.value !== "Khác") {
+    var NhomKH = idNhomKH.value;
+  } else {
+    var NhomKH = idNhapNhomKH.value;
+  }
+  if (idLichTrinh.value !== "Khác") {
+    var LichTrinh = idLichTrinh.value;
+  } else {
+    var LichTrinh = idNhapLichTrinh.value;
+  }
+  if (idPhongHop.value !== "Khác") {
+    var PhongHop = idPhongHop.value;
+  } else {
+    var PhongHop = idNhapPhongHop.value;
+  }
   if (MaNV === "") {
     alert("Vui lòng nhập mã nhân viên");
     return;
@@ -244,6 +298,14 @@ btnguidk.addEventListener("click", (e) => {
     alert("Vui lòng chọn quản lý xác nhận");
     return;
   }
+  if (NhomKH === "") {
+    alert("Vui lòng chọn nhóm khách");
+    return;
+  }
+  if (LichTrinh === "") {
+    alert("Vui lòng chọn lịch trình làm việc");
+    return;
+  }
   let ngaythang = TuNgay.split("-");
   var qs = confirm(
     `XÁC NHẬN! \nGửi đăng ký cho người vào công ty ngày ${ngaythang[2]}/${ngaythang[1]}/${ngaythang[0]}`
@@ -259,11 +321,14 @@ btnguidk.addEventListener("click", (e) => {
       ChucVu,
       dsdangky,
       LyDo,
+      GhiChu,
       TuNgay,
       DenNgay,
       TuGio,
       DenGio,
-      GhiChu,
+      NhomKH,
+      LichTrinh,
+      PhongHop,
       QuanLy
     };
     const submitData = { type, data };
@@ -410,12 +475,20 @@ function render(listdata) {
       </div>
     </div>
     <div style="padding-top:10px">  
-      <input class="nhaplieu" type="text" style="width:380px" readonly value="${
+      <input class="nhaplieu" type="text" style="width:380px" readonly value="Lý do: ${
         data.LyDo
       }"></input>
-      <br>
-      <input class="nhaplieu" type="text" style="width:380px" readonly value="${
+      <br><input class="nhaplieu" type="text" style="width:380px" readonly value="Phương tiện: ${
         data.GhiChu
+      }"></input>
+      <br><input class="nhaplieu" type="text" style="width:380px" readonly value="Nhóm khách: ${
+        data.NhomKH
+      }"></input>
+      <br><input class="nhaplieu" type="text" style="width:380px" readonly value="Lịch trình: ${
+        data.LichTrinh
+      }"></input>
+      <br><input class="nhaplieu" type="text" style="width:380px" readonly value="Phòng họp: ${
+        data.PhongHop
       }"></input>
     </div>  
     <div style="padding-top:10px">  
@@ -449,7 +522,7 @@ function render(listdata) {
       }" style="width:78%" type="text" readonly value="${data.GiamDoc} [${
       data.GDDuyet
     }]"></input>
-      <br><label>Lý do duyệt:</label>
+      <br><label>Nội dung duyệt:</label>
       <input class="nhaplieu" style="width:78%" type="text" readonly value="${
         data.LyDoDuyet
       }"></input>
