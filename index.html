@@ -42,7 +42,7 @@
 
       <form id="formdk" class="forminput">
         <div>
-          <label>Người đăng ký:</label><br>
+          <label for="idngdk">Người đăng ký:</label><br>
           <input id="idngdk" class="clsngdk" type="text" placeholder="Mã nhân viên" style="width:133px; background-color: rgb(251, 251, 222)"></input>
           <input id="idhotendk" class="clshotendk" type="text" placeholder="Họ và tên" style="width:235px" readonly></input>
         </div>
@@ -51,10 +51,10 @@
           <input id="idchucvu" class="done" type="text" placeholder="Chức vụ" style="width:235px" readonly></input>
         </div>
           <div style="padding-top:10px;">
-						<label>Danh sách người vào công ty:</label><br>
+						<label for="idCCCD">Danh sách người vào công ty:</label><br>
 						<div class="dsnguoivao">
 							<input class = "soTT" style="width:18px;border: none;border-top:" value="1/" readonly></input>
-							<input class="soCCCD" type="text" style="width:108px; margin-bottom:2px" placeholder="Số CCCD"></input>
+							<input id="idCCCD" class="soCCCD" type="text" style="width:108px; margin-bottom:2px" placeholder="Số CCCD"></input>
 							<input class="HoVaTen" type="text" style="width:235px; margin-bottom:2px" placeholder="Họ và tên"></input>
 							<br>
 							<input class="SoDT" type="text" style="width:107px; margin-bottom:2px;margin-left: 25px" placeholder="Số điện thoại"></input>
@@ -65,15 +65,15 @@
         </div>
           <div style="display:flex;padding-top:10px">
             <div style="text-align:right">
-          <label>Từ ngày:</label>
+          <label for="idtungay">Từ ngày:</label>
           <input id="idtungay" class="nhaplieu" type="date"></input>
-          <br><label>Đến ngày:</label>
+          <br><label for="iddenngay">Đến ngày:</label>
           <input id="iddenngay" class="nhaplieu" type="date"></input>
             </div>
             <div style="padding-left:15px;text-align:right">
-          <label>Giờ vào:</label>
+          <label for="idtuthgian">Giờ vào:</label>
           <input id="idtuthgian" class="nhaplieu" type="time" value="08:00" ></input>
-          <br><label>Giờ ra:</label>
+          <br><label for="iddenthgian">Giờ ra:</label>
           <input id="iddenthgian" class="nhaplieu" type="time" value="17:00" ></input>
             </div>
         </div>        
@@ -82,6 +82,36 @@
           <br>
           <input id="idghichu" class="nhaplieu" type="text" style="width:380px;margin-top: 3px" placeholder="Loại phương tiện - Biển số xe"></input>
         </div>   
+        <div style="padding-top:10px">
+          <label for="idNhomKH">Khách thuộc nhóm:</label>
+          <select id="idNhomKH" style="font-size:16px; height: 25px;">
+            <option value="Đối tác kinh doanh">Đối tác kinh doanh</option>
+            <option value="Nhà thầu">Nhà thầu</option>
+            <option value="Cơ quan ban ngành">Cơ quan ban ngành</option>
+            <option value="Khác">khác</option>
+          </select>
+          <input type="text" id="NhapNhomKH" style="width: 185px;display:none" placeholder="Nhập dữ liệu khác">
+        </div>
+        <div style="padding-top:5px">
+          <label for="idLichTrinh">Lịch trình làm việc:</label>
+          <select id="idLichTrinh" style="font-size:16px; height: 25px;">
+            <option value="Văn phòng và Xưởng sản xuất">Văn phòng và Xưởng sản xuất</option>
+            <option value="Văn phòng">Văn phòng</option>
+            <option value="Xưởng sản xuất">Xưởng sản xuất</option>
+            <option value="Khác">khác</option>
+          </select>
+          <input type="text" id="NhapLichTrinh" style="width: 185px;display:none" placeholder="Nhập dữ liệu khác">
+        </div>
+        <div style="padding-top:5px">
+          <label for="idPhongHop">Đăng ký phòng họp:</label>
+          <select id="idPhongHop" style="font-size:16px; height: 25px;">
+            <option  value="Phòng họp tầng 2">Phòng họp tầng 2</option>
+            <option value="Phòng họp tầng 3">Phòng họp tầng 3</option>
+            <option value="">Không sử dụng</option>
+            <option value="Khác">khác</option>
+          </select>
+          <input type="text" id="NhapPhongHop" style="width: 178px;display:none" placeholder="Nhập dữ liệu khác">
+        </div>
         <div id="dsquanly" style="padding-top:10px">
           <select id="quanly" style="font-size:16px; height: 25px;">
             <option value="">- Chọn quản lý xác nhận -</option>
@@ -89,17 +119,7 @@
         </div>
       <div style="text-align:right;margin-right: 20px"><button id="btnguidk" type="submit" style="width:140px">Gửi đăng ký</button></div>
       </form>
-      <h4
-        class="noteDate"
-        style="
-          font-family: 'Times New Roman', Times, serif;
-          color: gray;
-          text-align: right;
-          font-size: 14px
-        "
-      >
-        Bản thử nghiệm
-      </h4>
+
     </section>
         <!-- Tra kết quả -->
         <section id="pgketqua">
@@ -169,8 +189,10 @@
                 </div>
                 <div style="padding-top:10px">  
                   <input class="nhaplieu" type="text" style="width:380px" readonly></input>
-                  <br>
-                  <input class="nhaplieu" type="text" style="width:380px" readonly></input>
+                  <br><input class="nhaplieu" type="text" style="width:380px" readonly></input>
+                  <br><input class="nhaplieu" type="text" style="width:380px" readonly></input>
+                  <br><input class="nhaplieu" type="text" style="width:380px" readonly></input>
+                  <br><input class="nhaplieu" type="text" style="width:380px" readonly></input>
                 </div>  
                 <div style="padding-top:10px">  
                   <label>Trưởng bộ phận:</label>
