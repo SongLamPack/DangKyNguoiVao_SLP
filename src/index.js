@@ -447,8 +447,8 @@ function render(listdata) {
       }"></input>
     </div>
       <div style="padding-top:10px">
-      <label>Danh sách người vào công ty:</label><br>
-      <textarea class="nhaplieu" style="width:380px; height:${
+      <label font-size: 14px>Danh sách người vào công ty:</label><br>
+      <textarea class="nhaplieu" style="font-size: 16px;width:380px; height:${
         data.NguoiDuocVao.split(String.fromCharCode(10)).length * 37
       }px" readonly type="text">${data.NguoiDuocVao}</textarea >   
     </div>
