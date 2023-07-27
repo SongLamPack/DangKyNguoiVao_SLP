@@ -7,7 +7,7 @@ body {
 textarea {
   font-family: sans-serif;
   resize: none;
-  resize: ;
+  font-size: 16px;
 }
 
 label {
@@ -16,8 +16,7 @@ label {
   font-style: italic;
 }
 
-.forminput input,
-textarea {
+.forminput input {
   font-size: 16px;
   padding: 1px;
 }
@@ -28,8 +27,7 @@ textarea {
   padding: 10px;
 }
 
-#formketqua input,
-#formketqua textarea {
+#formketqua input {
   font-size: 16px;
   padding: 1px;
   border: none;
