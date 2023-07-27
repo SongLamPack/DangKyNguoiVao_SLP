@@ -178,16 +178,30 @@ idNhomKH.addEventListener("change", function () {
   }
 });
 
+const idlabelPH = document.getElementById("labelPH");
 idLichTrinh.addEventListener("change", function () {
-  if (idLichTrinh.value === "Khác") {
-    idNhapLichTrinh.style.display = "inline";
-    idLichTrinh.style.width = "65px";
-  } else {
-    idNhapLichTrinh.style.display = "none";
+  if (
+    idLichTrinh.value === "Làm việc tại phòng họp và đi tham quan nhà xưởng"
+  ) {
+    // idNhapLichTrinh.style.display = "none";
     idLichTrinh.style.width = "";
+  } else {
+    // idNhapLichTrinh.style.display = "inline";
+    idLichTrinh.style.width = "200px";
   }
-  if (idLichTrinh.value === "Khác" || idLichTrinh.value === "Xưởng sản xuất") {
-    idPhongHop.value = "";
+  if (idLichTrinh.value === "Làm việc tại phòng ban") {
+    idPhongHop.value = "Khác";
+    idPhongHop.style.display = "none";
+    idNhapPhongHop.style.display = "inline";
+    idlabelPH.textContent = "Đăng ký phòng làm việc:";
+  } else {
+    idPhongHop.style.display = "inline";
+    idNhapPhongHop.style.display = "none";
+    idlabelPH.textContent = "Đăng ký phòng họp:";
+    if (idPhongHop.value === "" || idPhongHop.value === "Khác") {
+      idPhongHop.value = "Phòng họp tầng 2";
+      idPhongHop.style.width = "";
+    }
   }
 });
 
@@ -447,47 +461,47 @@ function render(listdata) {
       }"></input>
     </div>
       <div style="padding-top:10px">
-      <label font-size: 14px>Danh sách người vào công ty:</label><br>
-      <textarea class="nhaplieu" style="font-size: 16px;width:380px; height:${
-        data.NguoiDuocVao.split(String.fromCharCode(10)).length * 37
+      <label style="font-size:14px">Danh sách người vào công ty:</label><br>
+      <textarea style="font-size:16px;width:380px; height:${
+        data.NguoiDuocVao.split(String.fromCharCode(10)).length * 38
       }px" readonly type="text">${data.NguoiDuocVao}</textarea >   
     </div>
     <div style="display:flex;padding-top:10px">
       <div style="text-align:right">
         <label>Từ ngày:</label>
-        <input class="nhaplieu" type="text" style="width:90px" readonly value="${
+        <input type="text" style="width:90px" readonly value="${
           data.TuNgay
         }"></input>
         <br><label>Đến ngày:</label>
-        <input class="nhaplieu" type="text" style="width:90px" readonly value="${
+        <input type="text" style="width:90px" readonly value="${
           data.DenNgay
         }"></input>
       </div>
       <div style="padding-left:15px;text-align:right">
         <label>Giờ vào:</label>
-        <input class="nhaplieu" type="text" style="width:50px" readonly value="${
+        <input type="text" style="width:50px" readonly value="${
           data.GioVao
         }"></input>
         <br><label>Giờ ra:</label>
-        <input class="nhaplieu" type="text" style="width:50px" readonly value="${
+        <input type="text" style="width:50px" readonly value="${
           data.GioRa
         }"></input>
       </div>
     </div>
     <div style="padding-top:10px">  
-      <input class="nhaplieu" type="text" style="width:380px" readonly value="Lý do: ${
+      <input type="text" style="width:380px" readonly value="Lý do: ${
         data.LyDo
       }"></input>
-      <br><input class="nhaplieu" type="text" style="width:380px" readonly value="Phương tiện: ${
+      <br><input type="text" style="width:380px" readonly value="Phương tiện: ${
         data.GhiChu
       }"></input>
-      <br><input class="nhaplieu" type="text" style="width:380px" readonly value="Nhóm khách: ${
+      <br><input type="text" style="width:380px" readonly value="Nhóm khách: ${
         data.NhomKH
       }"></input>
-      <br><input class="nhaplieu" type="text" style="width:380px" readonly value="Lịch trình: ${
+      <br><input type="text" style="width:380px" readonly value="Lịch trình: ${
         data.LichTrinh
       }"></input>
-      <br><input class="nhaplieu" type="text" style="width:380px" readonly value="Phòng họp: ${
+      <br><input type="text" style="width:380px" readonly value="Phòng họp: ${
         data.PhongHop
       }"></input>
     </div>  
@@ -523,7 +537,7 @@ function render(listdata) {
       data.GDDuyet
     }]"></input>
       <br><label>Nội dung duyệt:</label>
-      <input class="nhaplieu" style="width:78%" type="text" readonly value="${
+      <input style="width:78%" type="text" readonly value="${
         data.LyDoDuyet
       }"></input>
     </div>  
