@@ -26,7 +26,7 @@
           />
     </div>
     <!-- bảng chào mừng -->
-    <section id="pgdangky" class="hidden">
+    <section id="pgdangky" class="hiddenn">
       <h1
         id="tieudeform"
         class="tieude"
@@ -94,23 +94,23 @@
         </div>
         <div style="padding-top:5px">
           <label for="idLichTrinh">Lịch trình làm việc:</label>
-          <select id="idLichTrinh" style="font-size:16px; height: 25px;">
-            <option value="Văn phòng và Xưởng sản xuất">Văn phòng và Xưởng sản xuất</option>
-            <option value="Văn phòng">Văn phòng</option>
-            <option value="Xưởng sản xuất">Xưởng sản xuất</option>
+          <select id="idLichTrinh" style="font-size:16px; height: 25px;width: 200px">
+            <option value="Làm việc tại phòng họp">Làm việc tại phòng họp</option>
+            <option value="Làm việc tại phòng họp và đi tham quan nhà xưởng">Làm việc tại phòng họp và đi tham quan nhà xưởng</option>
+            <option value="Làm việc tại phòng ban">Làm việc tại phòng ban</option>
             <option value="Khác">khác</option>
           </select>
-          <input type="text" id="NhapLichTrinh" style="width: 185px;display:none" placeholder="Nhập dữ liệu khác">
+          <input type="text" id="NhapLichTrinh" style="width:185px;display:none" placeholder="Nhập dữ liệu khác">
         </div>
         <div style="padding-top:5px">
-          <label for="idPhongHop">Đăng ký phòng họp:</label>
+          <label id="labelPH" for="idPhongHop">Đăng ký phòng họp:</label>
           <select id="idPhongHop" style="font-size:16px; height: 25px;">
-            <option  value="Phòng họp tầng 2">Phòng họp tầng 2</option>
+            <option value="Phòng họp tầng 2">Phòng họp tầng 2</option>
             <option value="Phòng họp tầng 3">Phòng họp tầng 3</option>
             <option value="">Không sử dụng</option>
             <option value="Khác">khác</option>
           </select>
-          <input type="text" id="NhapPhongHop" style="width: 178px;display:none" placeholder="Nhập dữ liệu khác">
+          <input type="text" id="NhapPhongHop" style="width: 178px;display:none" placeholder="Nhập phòng làm việc">
         </div>
         <div id="dsquanly" style="padding-top:10px">
           <select id="quanly" style="font-size:16px; height: 25px;">
