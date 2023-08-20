@@ -57,6 +57,7 @@ function fetchDs() {
     };
     console.log("đang lấy danh sách nhân sự");
     modal.classList.add("display");
+    console.log(modal);
     fetch(URL, {
       method: "POST",
       headers: {
@@ -89,7 +90,7 @@ btnThemNg.addEventListener("click", (e) => {
   var innerEle = `<input style="width:18px;border: none;padding-top:10px" value="${stt}/" class="soTT Ng${stt}" readonly></input>
   <input class="soCCCD Ng${stt}" type="text" style="width:108px; margin-bottom:2px" placeholder="Số CCCD"></input>
   <input class="HoVaTen Ng${stt}" type="text" style="width:210px; margin-bottom:2px" placeholder="Họ và tên"></input>
-  <button id= "Ng${stt}" class="btnXoa Ng${stt}" style="width:21px;background-color:red;font-weight: ;">X</button>
+  <button id= "Ng${stt}" class="btnXoaNg${stt} Ng${stt}" style="width:21px;background-color:red;font-weight: ;">X</button>
   <br class="Ng${stt}">
   <input class="SoDT Ng${stt}" type="text" style="width:108px; margin-bottom:2px;margin-left: 25px" placeholder="Số điện thoại"></input>
   <input class="DVcongTac Ng${stt}" type="text" style="width:235px; margin-bottom:2px" placeholder="Đơn vị công tác" Value="${dvi}"></input>
@@ -98,17 +99,15 @@ btnThemNg.addEventListener("click", (e) => {
   while (temporaryDiv.firstChild) {
     dsnguoivao.appendChild(temporaryDiv.firstChild);
   }
-  var dsbtnXoa = document.querySelectorAll(".btnXoa");
+  var btnXoa = document.querySelector(`.btnXoaNg${stt}`);
   lay_lai_tt();
-  dsbtnXoa.forEach((btnXoa) => {
-    btnXoa.addEventListener("click", (e) => {
-      e.preventDefault();
-      var tt = btnXoa.getAttribute("id");
-      var dsinput = document.querySelectorAll(`.${tt}`);
-      dsinput.forEach((elem) => {
-        dsnguoivao.removeChild(elem);
-        lay_lai_tt();
-      });
+  btnXoa.addEventListener("click", (e) => {
+    e.preventDefault();
+    var tt = btnXoa.getAttribute("id");
+    var dsinput = document.querySelectorAll(`.${tt}`);
+    dsinput.forEach((elem) => {
+      dsnguoivao.removeChild(elem);
+      lay_lai_tt();
     });
   });
 });
