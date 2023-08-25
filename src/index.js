@@ -200,6 +200,7 @@ idLichTrinh.addEventListener("change", function () {
     if (idPhongHop.value === "" || idPhongHop.value === "Khác") {
       idPhongHop.value = "Phòng họp tầng 2";
       idPhongHop.style.width = "";
+      idlabelPH.textContent = "Đăng ký địa điểm";
     }
   }
 });
@@ -500,7 +501,7 @@ function render(listdata) {
       <br><input type="text" style="width:380px" readonly value="Lịch trình: ${
         data.LichTrinh
       }"></input>
-      <br><input type="text" style="width:380px" readonly value="Phòng họp: ${
+      <br><input type="text" style="width:380px" readonly value="Địa điểm: ${
         data.PhongHop
       }"></input>
     </div>  
