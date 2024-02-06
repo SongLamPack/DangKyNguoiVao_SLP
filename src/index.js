@@ -53,7 +53,7 @@ listItems.forEach((item) => {
 function fetchDs() {
   if (dsns.length === 0) {
     let submitData = {
-      type: "dangky"
+      type: "dangky",
     };
     console.log("đang lấy danh sách nhân sự");
     modal.classList.add("display");
@@ -61,9 +61,9 @@ function fetchDs() {
     fetch(URL, {
       method: "POST",
       headers: {
-        "Content-Type": "text/plain;charset=utf-8"
+        "Content-Type": "text/plain;charset=utf-8",
       },
-      body: JSON.stringify(submitData) // p data type must match "Content-Type" header
+      body: JSON.stringify(submitData), // p data type must match "Content-Type" header
     })
       .then((response) => {
         return response.json();
@@ -179,14 +179,12 @@ idNhomKH.addEventListener("change", function () {
 
 const idlabelPH = document.getElementById("labelPH");
 idLichTrinh.addEventListener("change", function () {
-  if (
-    idLichTrinh.value === "Làm việc tại phòng họp và đi tham quan nhà xưởng"
-  ) {
+  if (idLichTrinh.value === "Phòng họp và tham quan nhà xưởng") {
     // idNhapLichTrinh.style.display = "none";
     idLichTrinh.style.width = "";
   } else {
     // idNhapLichTrinh.style.display = "inline";
-    idLichTrinh.style.width = "200px";
+    idLichTrinh.style.width = "230px";
   }
   if (idLichTrinh.value === "Làm việc tại phòng ban") {
     idPhongHop.value = "Khác";
@@ -202,6 +200,13 @@ idLichTrinh.addEventListener("change", function () {
       idPhongHop.style.width = "";
       idlabelPH.textContent = "Đăng ký địa điểm";
     }
+  }
+  if (idLichTrinh.value === "Khác") {
+    idNhapLichTrinh.style.display = "inline";
+    idLichTrinh.style.width = "65px";
+  } else {
+    idNhapLichTrinh.style.display = "none";
+    idLichTrinh.style.width = "";
   }
 });
 
@@ -343,15 +348,15 @@ btnguidk.addEventListener("click", (e) => {
       NhomKH,
       LichTrinh,
       PhongHop,
-      QuanLy
+      QuanLy,
     };
     const submitData = { type, data };
     fetch(URL, {
       method: "POST",
       headers: {
-        "Content-Type": "text/plain;charset=utf-8"
+        "Content-Type": "text/plain;charset=utf-8",
       },
-      body: JSON.stringify(submitData) // p data type must match "Content-Type" header
+      body: JSON.stringify(submitData), // p data type must match "Content-Type" header
     })
       .then((response) => {
         return response.json();
@@ -393,16 +398,16 @@ btnkiemtra.addEventListener("click", (e) => {
 
   let submitData = {
     type: "check",
-    data: { name, idate }
+    data: { name, idate },
   };
   modal.classList.add("display");
   console.log(submitData);
   fetch(URL, {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8"
+      "Content-Type": "text/plain;charset=utf-8",
     },
-    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
+    body: JSON.stringify(submitData), // p data type must match "Content-Type" header
   })
     .then((response) => {
       return response.json();
